@@ -1,0 +1,16 @@
+Source: jubatus
+Section: unknown
+Priority: extra
+Maintainer: PFI & NTT <jubatus@googlegroups.com>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libmsgpack (>= 0.5.7), libonig2(>= 5.9.5), libzookeeper-mt (>= 3.4.5), libgoogle-glog0 (>= 0.3.3), libmecab2 (>= 0.996), mecab-ipadic-utf8 (>= 2.7.0-20070801)
+Standards-Version: 3.9.3
+Homepage: http://jubat.us/
+#Vcs-Git: git://git.debian.org/collab-maint/jubatus.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/jubatus.git;a=summary
+
+Package: jubatus
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Distributed processing framework and streaming machine learning library
+ Jubatus is a distributed processing framework and streaming machine
+ learning library.
