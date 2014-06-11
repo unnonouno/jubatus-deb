@@ -1,6 +1,6 @@
 Source: jubatus-mpio
 Priority: extra
-Maintainer: Vagrnt User <vagrant@vagrant.vm>
+Maintainer: PFI & NTT <jubatus@googlegroups.com>
 Build-Depends: debhelper (>= 8.0.0), autotools-dev
 Standards-Version: 3.9.3
 Section: libs
@@ -12,12 +12,10 @@ Package: jubatus-mpio-dev
 Section: libdevel
 Architecture: any
 Depends: jubatus-mpio (= ${binary:Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Multipurpose concurrent I/O framework for C++
 
 Package: jubatus-mpio
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Multipurpose concurrent I/O framework for C++
