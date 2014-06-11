@@ -12,6 +12,18 @@ PKG_DIR="${WORKDIR}/package"
 . ./pkg_version
 
 # -------------------------------
+# @require_commands
+# -------------------------------
+@require_commands() {
+        for CMD in "$@"; do
+                if ! which "${CMD}" > /dev/null 2>&1; then
+                        echo "ERROR: Cannot detect '$CMD' command"
+                        return 1
+                fi
+        done
+}
+
+# -------------------------------
 # download_url
 # -------------------------------
 download_url() {
@@ -62,6 +74,9 @@ do_build() {
 	cp -r ${META_DIR}/jubatus-mpio/debian .
 	dpkg-buildpackage
 	popd
+	echo "Installing jubatus-mpio"
+	sudo dpkg -i jubatus-mpio_${MPIO_VER}-1_amd64.deb
+        sudo dpkg -i jubatus-mpio-dev_${MPIO_VER}-1_amd64.deb
 
 	# msgpack-rpc
 	tar zxf jubatus_msgpack-rpc-${MSGPACK_RPC_VER}.tar.gz
@@ -71,6 +86,9 @@ do_build() {
 	cp -r ${META_DIR}/jubatus-msgpack-rpc/debian .
 	dpkg-buildpackage
 	popd
+	echo "Installing jubatus-msgpack-rpc"
+	sudo dpkg -i jubatus-msgpack-rpc_${MSGPACK_RPC_VER}-1_amd64.deb
+	sudo dpkg -i jubatus-msgpack-rpc-dev_${MSGPACK_RPC_VER}-1_amd64.deb
 
 	# jubatus
 	tar zxf ${JUBATUS_VER}.tar.gz
@@ -79,11 +97,47 @@ do_build() {
 	cp -r ${META_DIR}/jubatus/debian .
 	dpkg-buildpackage
 	popd
+	sudo dpkg -i jubatus_${JUBATUS_VER}-1_amd64.deb
 
 	popd
 	return 0
 }
 
+clean() {
+	if apt-cache show jubatus; then
+            sudo apt-get remove -y jubatus
+        else
+            echo 'jubatus is not installed'
+        fi
+
+        if apt-cache show jubatus-msgpack-rpc; then
+            sudo apt-get remove -y jubatus-msgpack-rpc
+        else
+            echo 'jubatus-mspgack-rpc is not installed'
+        fi
+
+	if apt-cache show jubatus-msgpack-rpc-dev; then
+	    sudo apt-get remove -y jubatus-msgpack-rpc-dev
+	else
+	    echo 'jubatus-msgpack-rpc-dev is not installed'
+	fi
+
+	if apt-cache show jubatus-mpio; then
+            sudo apt-get remove -y jubatus-mpio
+        else
+            echo 'jubatus-mpio is not installed'
+        fi
+
+	if apt-cache show jubatus-mpio-dev; then
+	    sudo apt-get remove -y jubatus-mpio-dev
+	else
+	    echo 'jubatus-mpio-dev is not installed'
+	fi
+
+        rm -rf source
+}
+
+clean
 do_download
 do_build
 
