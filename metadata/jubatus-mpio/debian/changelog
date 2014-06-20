@@ -1,0 +1,5 @@
+jubatus-mpio (0.4.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Vagrant User <vagrant@vagrant.vm>  Wed, 07 May 2014 00:58:44 -0700

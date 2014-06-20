@@ -1,0 +1,5 @@
+jubatus (0.5.4-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Vagrant User <vagrant@vagrant.vm>  Wed, 07 May 2014 03:09:57 -0700
