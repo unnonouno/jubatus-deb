@@ -1,7 +1,7 @@
 Source: jubatus-msgpack-rpc
 Priority: extra
 Maintainer: PFI & NTT <jubatus@googlegroups.com>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, libmsgpackc2 (>= 0.5.7), jubatus-mpio
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libmsgpack-dev (>= 0.5.7), jubatus-mpio-dev
 Standards-Version: 3.9.3
 Section: libs
 Homepage: http://jubat.us/
